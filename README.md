@@ -8,5 +8,7 @@ Features: responsive layout, keyboard-accessible controls, live score feedback, 
 
 Run with `python3 -m http.server 8000` from this folder.
 
-GitHub Pages publication and course submission are paused for user review. The development preview is not an evaluator URL. Obi is fictional; timings, upgrades, and rewards are symbolic.
+Live game: https://dinasaur9.github.io/time-returned/ . Course submission remains with the student. The development preview is not an evaluator URL. Obi is fictional; timings, upgrades, and rewards are symbolic.
 
+
+Obi follows the curved road using coordinates matched to the SVG landscape. Every completed walk opens an arrival summary, including zero-supply days. The summary tracks rope, coins, water, actual mud penalties, upgrade spending, and the current balance. Dismiss it to visit the shop; day 10 shows the final result afterward.
