@@ -1,47 +1,12 @@
-# charity: water – Water Quest Game Starter
+# Time Returned
 
-In this game, users tap charity: water’s signature yellow jerry cans as fast as they can to earn points. You’ll be working from a partially built version of the game. Some functionality is already provided, and your job is to complete the rest.
+A charity: water inspired student prototype by Dina Seoudi, built with HTML, CSS, and vanilla JavaScript. AI assisted with implementation and visual iteration.
 
-## What’s Already Done
+Collect rope, coins, and water (+1 supply) and avoid mud (-2 supplies, floored at zero). Each day lasts 20 seconds. Build the rain barrel (8), filter (12), and community well (20) in order. The water walk falls from 3 to 2 to 1 to 0 hours. Build the well before day 10 ends. Next Day appears between rounds. Reset and Play Again clear state and timers.
 
-The starter files already include:
+Features: responsive layout, keyboard-accessible controls, live score feedback, timer, obstacles, upgrades, win/loss screens, virtual campus badge, confetti, reduced-motion support, and donation links. Original SVG scene and character; starter logo from GCA-Classroom/05-cw-game-water-quest.
 
-- A **heading and tagline**
-- A **start button**
-- A **game container** displaying a grid
-- A **placeholder timer and score** (not functional yet)
-- A **logo image** from charity: water
-- Working code that:
-  - Starts the game when the start button is clicked  
-  - Makes jerry cans pop up randomly
+Run with `python3 -m http.server 8000` from this folder.
 
-## What You Need to Add
-
-Here’s what you're required to implement to bring the game to life:
-
-### Game Functionality
-
-- **Update the score**
-  - +1 point for each can clicked  
-
-- **Add a 30-second timer**
-  - When the timer reaches 0, the game ends  
-
-- **Display a message when the game ends**
-  - If the player scores **20 or more points**, show a **winning** message  
-  - If the player scores **less than 20 points**, show a **"try again"** message  
-  - Create one array of possible winning messages and one array of losing messages  
-  - Depending on whether the user wins or loses, randomly pick and display a message from the appropriate array  
-
-### Visual Styling
-
-- **Add charity: water branding**
-  
-  - Use the provided logo  
-  - Use the [charity: water brand guidelines](https://drive.google.com/file/d/1ct4zYRIwHAtxoNQoeaVwWYPdnruSC6sr/view) to stay on-brand with colors and styling
-  - Add styling rules to ensure your game layout adjusts well across different screen sizes
-
-These are the minimum requirements, but if you'd like an additional challenge go ahead and give the LevelUps a shot! For example, you could add logic to decrease the user's score if they miss a jerry can. Have fun and make the game your own!
-
-If you have any questions or need any assistance with your code, reach out to the HelpHub or attend a Drop-In Hour. You got this!!
+GitHub Pages publication and course submission are paused for user review. The development preview is not an evaluator URL. Obi is fictional; timings, upgrades, and rewards are symbolic.
 

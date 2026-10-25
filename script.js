@@ -16,22 +16,22 @@ let state, clock, spawnClock;
 function stopClocks(){clearInterval(clock);clearInterval(spawnClock);}
 function message(text){$('feedback').textContent=text;}
 function update(){
- $('walk').textContent=state.walk===0?'0 hrs':state.walk/60+' hrs';
+ $('walk').textContent=state.walk===0?'0 hrs':state.walk/60+(state.walk===60?' hr':' hrs');
  $('day').textContent=state.day+' / 10';
  $('score').textContent=state.score+' items';
  $('timer').textContent=state.seconds+'s';
  $('returned').textContent=(180-state.walk)+' minutes';
- $('progress').value=180-state.walk;
+ $('progress').value=180-state.walk; $('progress').setAttribute('aria-valuenow',String(180-state.walk)); $('progress').setAttribute('aria-valuetext',(180-state.walk)+' minutes returned');
  $('shop').replaceChildren();
  upgrades.forEach((u,i)=>{
   const box=document.createElement('div');box.className='upgrade';
-  const name=document.createElement('strong');name.textContent=u.icon+' '+u.name;
-  const detail=document.createElement('small');detail.textContent='Walk becomes '+u.walk/60+' hrs / day';
+  box.className='upgrade'+(i<state.level?' built':i===state.level&&state.score>=u.cost?' available':''); const icon=document.createElement('span');icon.className='upgrade-icon';icon.innerHTML='<img src="img/'+(['barrel','drop','well'][i])+'.svg" alt="">'; const name=document.createElement('strong');name.textContent=u.name;
+  const detail=document.createElement('small');detail.textContent=u.walk===0?'No more water walk':u.walk/60+' hour'+(u.walk===60?'':'s')+' water walk';
   const buy=document.createElement('button');
   buy.textContent=i<state.level?'Built ✓':'Build · '+u.cost+' items';
   buy.disabled=i!==state.level||state.over;
   buy.addEventListener('click',()=>buyUpgrade(i));
-  box.append(name,detail,buy);$('shop').append(box);
+  box.append(icon,name,detail,buy);$('shop').append(box);
  });
 }
 function begin(){
@@ -44,14 +44,14 @@ function startDay(){
  stopClocks();state.active=true;state.seconds=20;
  $('items').replaceChildren();$('next').disabled=true;$('phase').textContent='Day in progress';
  message('Collect supplies. Avoid the brown puddles!');update();
- $('obi').style.bottom='5px';
+ $('obi').style.bottom='3%';
  // Six supplies per batch; shuffled positions prevent overlap.
  spawnBatch();
  const deadline=Date.now()+20000;
  clock=setInterval(()=>{
   state.seconds=Math.max(0,Math.ceil((deadline-Date.now())/1000));
   $('timer').textContent=state.seconds+'s';
-  $('obi').style.bottom=(5+(20-state.seconds)*14)+'px';
+  $('obi').style.bottom=(3+(20-state.seconds)*2.8)+'%';
   if(state.seconds===0)endDay();
  },200);
  spawnClock=setInterval(spawnBatch,3500);
@@ -65,8 +65,8 @@ function spawnBatch(){
   const type=bad?['🟤','Mud puddle']:types[Math.floor(Math.random()*types.length)];
   const button=document.createElement('button');
   button.className='item'+(bad?' mud':'');
-  button.textContent=type[0];button.setAttribute('aria-label',type[1]+(bad?' minus 2 items':' plus 1 item'));
-  const slot=spots[i];button.style.left=(10+(slot%3)*31)+'%';button.style.top=(210+Math.floor(slot/3)*70)+'px';
+  const asset=bad?'mud':type[1]==='Rope'?'rope':type[1]==='Coin'?'coin':'drop'; button.innerHTML='<img src="img/'+asset+'.svg" alt="">';button.setAttribute('aria-label',type[1]+(bad?' minus 2 items':' plus 1 item'));
+  const slot=spots[i];button.style.left=(24+(slot%3)*25)+'%';button.style.top=(40+Math.floor(slot/3)*17)+'%';
   button.addEventListener('click',()=>{
    if(!state.active||state.over||!button.isConnected)return;
    button.remove();
@@ -97,7 +97,7 @@ function finish(won){
  stopClocks();state.active=false;state.over=true;$('items').replaceChildren();
  $('game').hidden=true;$('ending').hidden=false;$('perk').hidden=!won;
  $('endLabel').textContent=won?'TIME RETURNED. FUTURE OPEN.':'THE JOURNEY IS NOT OVER';
- $('endArt').textContent=won?'🚶🏾 → 🏫':'🪣';
+ $('endArt').innerHTML=won?'<img src="img/obi.svg" alt=""><span>→</span><span>🏫</span>':'<img src="img/well.svg" alt="">';
  $('endTitle').textContent=won?'Obi is off to school!':"Time's up! Try again.";
  $('endText').textContent=won?'You built the well on day '+state.day+' and returned 3 hours of Obi’s day. Clean water opens up time for learning and possibility.':'Day 10 has ended without a well. Collect more supplies, avoid muddy puddles, and build upgrades in order on your next journey.';
  $('endTitle').focus();
