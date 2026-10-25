@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Water Quest</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Water Quest</h1>
-    <p class="game-instructions">Collect 20 items to complete the game!</p>
-    <div class="stats">
-      <p>Cans Collected: <span id="current-cans">0</span></p>
-      <p>Time Left: <span id="timer">30</span>s</p>
-    </div>
-    <div id="achievements" class="achievement"></div>
-    <div class="game-grid"></div>
-    <button id="start-game">Start Game</button>
-  </div>
-  <script src="script.js"></script>
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Time Returned | charity: water</title><link rel="stylesheet" href="style.css"><script src="script.js" defer></script></head>
+<body><header><img src="img/cw_logo_horizontal.png" alt="charity: water"><a href="https://www.charitywater.org/" target="_blank" rel="noopener">About the mission ↗</a></header>
+<main><section id="home" class="card intro"><p class="eyebrow">SMALL ACTIONS. MORE POSSIBILITY.</p><h1>Time Returned</h1><h2>Give Obi his day back.</h2><img class="can" src="img/water-can-transparent.png" alt="Yellow water jerry can"><p>Every day, Obi walks three hours for water. Collect supplies, build a well, and give him time to go to school.</p><button id="start">Start the journey →</button><button id="help" class="secondary">How to play</button><p id="instructions" hidden>Tap rope, coins, and clean water for +1 item each. Avoid muddy puddles: they cost 2 items. Each day lasts 20 seconds. Between days, spend items on a rain barrel (8), a filter (12), then a well (20). Build the well by the end of day 10. Use Tab and Enter to play with a keyboard.</p><a href="https://www.charitywater.org/donate" target="_blank" rel="noopener">Donate to charity: water ↗</a></section>
+<section id="game" hidden><div class="game-heading"><div><p class="eyebrow">OBI'S JOURNEY</p><h1>Time Returned</h1></div><button id="reset" class="secondary">Reset</button></div>
+<div class="stats"><div>Walk<strong id="walk">3 hrs</strong></div><div>Day<strong id="day">1 / 10</strong></div><div>Score<strong id="score">0 items</strong></div><div>Day timer<strong id="timer">20s</strong></div></div>
+<div class="layout"><section class="card trail-card"><div class="trail-label"><span>Collect a little. Change a lot.</span><span id="phase">Day in progress</span></div><div id="trail"><div class="well" aria-hidden="true">🪣<small>THE WELL</small></div><div class="path"></div><div id="items"></div><div id="obi" aria-label="Obi walking for water">🚶🏾<small>OBI</small></div></div><p id="feedback" role="status" aria-live="polite">Collect supplies. Avoid the brown puddles!</p><p class="legend">🪢 Rope · 🪙 Coin · 💧 Clean water: +1 &nbsp; | &nbsp; 🟤 Mud: −2</p></section>
+<aside class="card"><p class="eyebrow">BUILD A BETTER DAY</p><h2>Upgrade shop</h2><p>Use your collected items. Each upgrade returns more of Obi's time.</p><div id="shop"></div><div class="returned"><span>Time returned each day</span><strong id="returned">0 minutes</strong><progress id="progress" max="180" value="0">0</progress></div><button id="next" disabled>Next day →</button><p id="fact">Clean water closer to home means more time for school, work, and family.</p></aside></div></section>
+<section id="ending" class="card intro" hidden><p class="eyebrow" id="endLabel"></p><div id="endArt" aria-hidden="true"></div><h1 id="endTitle" tabindex="-1"></h1><p id="endText"></p><div id="perk" hidden><h2>Campus perk unlocked 🎓</h2><p>Time for a study break! Your virtual campus badge is ready.</p><small>Prototype reward only; no real discount or prize.</small></div><button id="again">Play again</button><a href="https://www.charitywater.org/donate" target="_blank" rel="noopener">Help return time in the real world ↗</a></section></main>
+<footer>Inspired by charity: water • A student game by Dina Seoudi<br>Obi is a fictional character. Timings and upgrades are simplified game mechanics.</footer><div id="confetti" aria-hidden="true"></div></body></html>
